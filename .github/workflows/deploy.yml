@@ -5,8 +5,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: deploying 
-              run: actions/checkout@v4
+              uses: actions/checkout@v4
             - name: uploading artifact
-              run: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./
             - name: dowloading distro
-              run: actions/deploy-pages@v4
+              uses: actions/deploy-pages@v4
