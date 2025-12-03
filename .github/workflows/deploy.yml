@@ -1,0 +1,12 @@
+name: deploying
+on: push
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: deploying 
+              run: actions/checkout@v4
+            - name: uploading artifact
+              run: actions/upload-pages-artifact@v3
+            - name: dowloading distro
+              run: actions/deploy-pages@v4
