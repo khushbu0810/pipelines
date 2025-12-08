@@ -6,16 +6,16 @@
   --text: #1f2937;        /* Slate 800 */
   --text-muted: #4b5563;  /* Slate 600 */
   --primary: #2563eb;     /* Blue 600 */
-  --primary-ink: #0b3fb8; /* Darker blue for focus */
   --border: #e5e7eb;      /* Gray 200 */
   --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* CSS reset-ish */
 *,
 *::before,
 *::after { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
@@ -26,7 +26,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Layout helpers */
 .container {
   max-width: 880px;
   margin: 0 auto;
@@ -46,7 +45,6 @@ body {
   font-weight: 500;
 }
 
-/* Content */
 main { padding: 2rem 0 3rem; }
 
 .card {
@@ -72,4 +70,59 @@ p { margin: 0.75rem 0; }
 .list {
   padding-left: 1.25rem;
   margin: 0.75rem 0;
+}
+.list li {
+  margin: 0.35rem 0;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(37, 99, 235, 0.35);
+}
+a:hover { text-decoration: underline; }
+a:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 2px;
+}
+
+/* Projects */
+.project {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0 0.75rem;
+  background: #fff;
+}
+.project-title {
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.site-footer .container {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .site-header .container { padding: 2rem 1rem; }
+  .card { padding: 1.25rem; }
+  .info h2 { font-size: 1.5rem; }
+}
+
+/* Keep light even if OS prefers dark */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f8fb;
+    --text: #1f2937;
+  }
 }
