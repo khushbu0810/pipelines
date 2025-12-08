@@ -1,6 +1,10 @@
 
-name: deploying
-on: push
+name: Deploying to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # Change if your default branch is different
 
 permissions:
   contents: read
@@ -10,14 +14,27 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy-pages.outputs.page_url }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Optional: Add a build step if you have a build process
+      # - name: Build site
+      #   run: |
+      #     echo "Add your build commands here (npm run build, etc.)"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./   # Change if your build output is in a different folder (e.g., ./dist)
 
       - name: Deploy to GitHub Pages
+        id: deploy-pages
         uses: actions/deploy-pages@v4
